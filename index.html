@@ -38,7 +38,6 @@
       display: flex; align-items: center; justify-content: space-between;
     }
     .topbar-left { display: flex; align-items: center; gap: 12px; }
-    .usf-shield { width: 28px; height: 34px; flex-shrink: 0; }
     .topbar-name {
       font-size: 11px; font-weight: 500;
       color: rgba(255,255,255,0.9);
@@ -48,13 +47,16 @@
       display: block; font-weight: 300;
       color: rgba(255,255,255,0.5); font-size: 10px;
     }
-    .xrp-pill {
-      font-family: 'IBM Plex Mono', monospace; font-size: 10px;
-      color: var(--gold-lt);
-      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 100px; padding: 3px 11px; letter-spacing: 0.05em;
+    .topbar-nav {
+      display: flex; align-items: center; gap: 24px;
     }
-    
+    .topbar-nav a {
+      font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+      color: rgba(255,255,255,0.9); letter-spacing: 0.07em;
+      text-transform: uppercase; text-decoration: none; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .topbar-nav a:hover { color: var(--gold-lt); }
 
     /* ── HERO ── */
     .hero {
@@ -119,7 +121,6 @@
       width: 100%;
     }
 
-    /* USF wordmark block */
     .usf-block {
       display: flex; flex-direction: column; align-items: center; gap: 6px;
     }
@@ -134,20 +135,11 @@
       font-size: 22px; color: var(--rule); flex-shrink: 0;
     }
 
-    /* Ripple logo block */
     .ripple-block {
       display: flex; flex-direction: column; align-items: center; gap: 6px;
     }
     .ripple-logo-wrap { width: 130px; }
-    .ripple-logo-wrap svg { width: 100%; height: auto; }
-    .ripple-wordmark {
-      font-family: 'Sora', sans-serif;
-      font-size: 10px; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: #00539c;
-    }
-
-
+    .ripple-logo-wrap img { width: 100%; height: auto; }
 
     /* ── DIVIDER ── */
     .divider {
@@ -239,12 +231,14 @@
     .partner-box            { animation: up 0.6s 0.28s ease both; }
     .divider                { animation: up 0.4s 0.4s  ease both; }
     .link-item:nth-child(1) { animation: up 0.4s 0.45s ease both; }
-    .link-item:nth-child(2) { animation: up 0.4s 0.55s ease both; }
-    .link-item:nth-child(3) { animation: up 0.4s 0.65s ease both; }
+    .link-item:nth-child(2) { animation: up 0.4s 0.50s ease both; }
+    .link-item:nth-child(3) { animation: up 0.4s 0.55s ease both; }
+    .link-item:nth-child(4) { animation: up 0.4s 0.60s ease both; }
+    .link-item:nth-child(5) { animation: up 0.4s 0.65s ease both; }
 
     @media (max-width: 700px) {
       .hero { grid-template-columns: 1fr; gap: 36px; padding-top: 48px; }
-      .topbar .xrp-pill { display: none; }
+      .topbar-nav a { font-size: 10px; }
     }
   </style>
 </head>
@@ -259,23 +253,9 @@
           <span>Computer Science</span>
         </div>
       </div>
-      <div style = "display: flex; align-items: center; gap: 24px;">
-      <a href="https://ripplexusf.github.io/"
-        target = "_self" rel="noopener noreferrer"
-         style="font-family: 'IBM Plex Mono', monospace; font-size: 16px;
-                color: rgba(255,255,255,0.9); letter-spacing: 0.07em;
-                text-transform: uppercase; text-decoration: none;
-                font-weight:600">
-      Home
-      </a>
-      <a href="https://ripplexusf.github.io/schedule/"
-        target = "_self" rel="noopener noreferrer"
-         style="font-family: 'IBM Plex Mono', monospace; font-size: 16px;
-                color: rgba(255,255,255,0.9); letter-spacing: 0.07em;
-                text-transform: uppercase; text-decoration: none;
-                font-weight:600">
-      Schedule
-      </a>
+      <div class="topbar-nav">
+        <a href="https://ripplexusf.github.io/" target="_self">Home</a>
+        <a href="https://ripplexusf.github.io/schedule/" target="_self">Schedule</a>
       </div>
     </div>
   </div>
@@ -293,22 +273,16 @@
 
     <div class="partner-box">
       <div class="partner-logos">
-
-        <!-- USF -->
         <div class="usf-block">
           <span class="usf-text">USF</span>
         </div>
-
         <div class="partner-x">×</div>
-
         <div class="ripple-block">
-        <div class="ripple-logo-wrap">
-          <img src="ripple.svg" alt="Ripple" style="width:130px; height:auto;" />
+          <div class="ripple-logo-wrap">
+            <img src="ripple.svg" alt="Ripple" />
+          </div>
         </div>
       </div>
-
-      </div>
-
     </div>
   </div>
 
@@ -320,8 +294,18 @@
   <!-- LINKS -->
   <div class="links">
 
-    <a class="link-item" href="https://linktr.ee/RippleDevRel" target="_blank" rel="noopener noreferrer">
+    <a class="link-item" href="https://ripplexusf.github.io/sample_code/" target="_blank" rel="noopener noreferrer">
       <div class="link-num">01</div>
+      <div class="link-body">
+        <div class="link-tag">Code</div>
+        <div class="link-title">Sample Code</div>
+        <div class="link-desc">Hands-on XRPL code examples to get you started building.</div>
+      </div>
+      <div class="link-arrow">↗</div>
+    </a>
+
+    <a class="link-item" href="https://linktr.ee/RippleDevRel" target="_blank" rel="noopener noreferrer">
+      <div class="link-num">02</div>
       <div class="link-body">
         <div class="link-tag">Hub</div>
         <div class="link-title">Ripple DevRel</div>
@@ -331,7 +315,7 @@
     </a>
 
     <a class="link-item" href="https://learn.xrpl.org/" target="_blank" rel="noopener noreferrer">
-      <div class="link-num">02</div>
+      <div class="link-num">03</div>
       <div class="link-body">
         <div class="link-tag">Education</div>
         <div class="link-title">Learn XRPL</div>
@@ -341,7 +325,7 @@
     </a>
 
     <a class="link-item" href="https://www.xrpl-commons.org/" target="_blank" rel="noopener noreferrer">
-      <div class="link-num">03</div>
+      <div class="link-num">04</div>
       <div class="link-body">
         <div class="link-tag">Community</div>
         <div class="link-title">XRPL Commons</div>
@@ -351,11 +335,11 @@
     </a>
 
     <a class="link-item" href="https://ripplexusf.github.io/links/Ripple_Lunch_Talk.pdf" target="_blank" rel="noopener noreferrer">
-      <div class="link-num">04</div>
+      <div class="link-num">05</div>
       <div class="link-body">
         <div class="link-tag">Guide</div>
         <div class="link-title">Intro Slides</div>
-        <div class="link-desc">Introductory slides for Blockchain and Ripple from a previous Lunch Talk </div>
+        <div class="link-desc">Introductory slides for Blockchain and Ripple from a previous Lunch Talk.</div>
       </div>
       <div class="link-arrow">↗</div>
     </a>
