@@ -58,9 +58,12 @@
 
     /* ── HERO ── */
     .hero {
-      max-width: 960px; margin: 0 auto; padding: 72px 32px 0;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 64px; align-items: center;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 48px 32px 0;
+      display: flex;
+      justify-content: center;
+      text-align: center;
     }
 
     .eyebrow {
@@ -68,11 +71,16 @@
       letter-spacing: 0.14em; text-transform: uppercase;
       color: var(--gold); margin-bottom: 20px;
       display: flex; align-items: center; gap: 10px;
+      justify-content: flex-end;
     }
     .eyebrow::after {
+      display: none
+    }
+    .eyebrow::before {
       content: ''; height: 1px; width: 40px;
       background: var(--gold); opacity: 0.45; display: block;
     }
+
 
     h1 {
       font-family: 'Playfair Display', serif;
@@ -94,30 +102,41 @@
     .partner-box {
       border: 1.5px solid var(--rule);
       border-radius: 6px;
-      padding: 36px 32px;
+      padding: 32px 40px;
       background: var(--paper);
       position: relative;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
-      gap: 28px;
+      gap: 40px;
     }
 
-    .partner-box::before {
-      content: '✦';
-      position: absolute; top: -10px; left: 50%;
-      transform: translateX(-50%);
-      background: var(--paper); padding: 0 8px;
-      color: var(--gold); font-size: 12px;
-    }
-
-    .partner-logos {
+    .logos {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 24px;
-      width: 100%;
+      flex-shrink: 0;
+      justify-self: start;
     }
+
+    .usf-block {
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+    }
+    .usf-shield-img {
+      width: 72px; height: auto;
+    }
+
+    .logos_divider {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; color: white; flex-shrink: 0;
+    }
+
+    .ripple-block {
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+    }
+    .ripple-logo-wrap { width: 130px; }
+    .ripple-logo-wrap img { width: 100%; height: auto; }
 
     /* USF wordmark block */
     .usf-block {
@@ -170,7 +189,7 @@
       padding: 26px 0; border-bottom: 1px solid var(--rule);
       text-decoration: none; color: inherit; position: relative;
     }
-    .link-item:first-child { border-top: 1px solid var(--rule); }
+    .link-item:first-child { border-top: none; }
 
     .link-item::before {
       content: '';
@@ -216,7 +235,7 @@
     footer { background: var(--green); border-top: 3px solid var(--gold); }
     .footer-inner {
       max-width: 960px; margin: 0 auto; padding: 26px 32px;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: center; justify-content: center;
       flex-wrap: wrap; gap: 10px;
     }
     .footer-l {
@@ -253,11 +272,16 @@
   <!-- TOPBAR -->
   <div class="topbar">
     <div class="topbar-inner">
-      <div class="topbar-left">
-        <div class="topbar-name">
-          University of San Francisco
-          <span>Computer Science</span>
+      <div class="logos">
+        <div class = "usf-block">
+          <img class="usf-shield-img" src="university-of-san-francisco.jpg" alt="University of San Francisco" />
         </div>
+        <div class="logos_divider">|</div>
+         <div class="ripple-block">
+          <div class="ripple-logo-wrap">
+            <img src="full-ripple-logo.png" alt="Ripple" />
+          </div>
+         </div>
       </div>
       <div style = "display: flex; align-items: center; gap: 24px;">
       <a href="https://ripplexusf.github.io/"
@@ -291,25 +315,6 @@
       <p class="hero-sub">Tools, courses, and community to explore and build on the XRPL ecosystem.</p>
     </div>
 
-    <div class="partner-box">
-      <div class="partner-logos">
-
-        <!-- USF -->
-        <div class="usf-block">
-          <span class="usf-text">USF</span>
-        </div>
-
-        <div class="partner-x">×</div>
-
-        <div class="ripple-block">
-        <div class="ripple-logo-wrap">
-          <img src="ripple.svg" alt="Ripple" style="width:130px; height:auto;" />
-        </div>
-      </div>
-
-      </div>
-
-    </div>
   </div>
 
   <!-- DIVIDER -->
@@ -365,10 +370,12 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
-      <div class="footer-l"><strong>University of San Francisco</strong> · CS Dept · XRPL Resources</div>
-      <div class="footer-r">usfca.edu · xrpl.org</div>
+      <div class="footer-l">
+        <img src="test2.png" alt="USF Law" style="height: 48px; width: auto;" />
+      </div>
     </div>
   </footer>
+
 
 </body>
 </html>
